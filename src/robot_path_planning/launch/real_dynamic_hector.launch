@@ -47,9 +47,7 @@
 
   <node pkg="robot_path_planning" type="dynamic_obstacle.py" name="dynamic_obstacle" output="screen" />
 
-  <node pkg="robot_path_planning" type="rosbridge.py" name="rosbridge" output="screen" />
-
-  <node pkg="robot_path_planning" type="stream_rviz.py" name="stream_rviz" output="screen" />
+  <node pkg="robot_path_planning" type="runtime_control.py" name="runtime_control" output="screen" />
 
   <node pkg="robot_path_planning" type="hardware_interface.py" name="hardware_interface" output="screen"/> 
   

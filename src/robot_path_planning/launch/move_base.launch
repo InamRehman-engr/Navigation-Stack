@@ -1,17 +1,3 @@
-<!--<launch>
-  <node pkg="move_base" type="move_base" name="move_base" output="screen">
-    <param name="base_global_planner" value="navfn/NavfnROS"/>
-    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
-    <rosparam file="$(find robot_path_planning)/config/move_base_params.yaml" command="load"/>
-    <rosparam file="$(find robot_path_planning)/config/costmap_common_params.yaml" command="load"/>
-    <rosparam file="$(find robot_path_planning)/config/global_costmap_params.yaml" command="load"/>
-    <rosparam file="$(find robot_path_planning)/config/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find robot_path_planning)/config/teb_params.yaml" command="load"/>
-  </node>
-</launch>-->
-
-  
-
 <launch>
   <node pkg="move_base" type="move_base" name="move_base" output="screen">
      <!-- Use Global Planner (supports dynamic replanning) -->
