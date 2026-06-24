@@ -2,34 +2,8 @@
   <!-- Use simulated time -->
   <param name="use_sim_time" value="true"/>
 
-  <!--FOR HECTOR SLAM UNCOMMENT BELOW AND COMMENT FOR AMCL USE-->
-  
    <!-- Include localize -->
   <include file="$(find robot_path_planning)/launch/hector_slam.launch" /> 
-
- 
- <!--FOR AMCL UNCOMMENT BELOW LINE AND COMMENT FOR HECTOR SLAM USE-->
-
-  <!-- <node pkg="amcl" type="amcl" name="amcl" output="screen">
-    <rosparam file="$(find robot_path_planning)/config/amcl_params.yaml" command="load"/>
-    <remap from="odom" to="/hector_odom"/>
-    <remap from="scan" to="/scan"/> 
-  </node>-->
-
- <!-- Load the map -->
-  <!-- <include file="$(find robot_path_planning)/launch/load_map.launch"/> -->
-
-  <!-- Start AMCL for Localization -->
-  <!--<node name="amcl" pkg="amcl" type="amcl" output="screen">
-    <param name="use_map_topic" value="true"/>
-    <rosparam file="$(find robot_path_planning)/config/amcl_params.yaml" command="load"/>
-    <param name="odom_model_type" value="diff"/>
-    <param name="odom_alpha1" value="0.0001"/>  
-    <param name="odom_alpha2" value="0.0001"/>
-    <param name="odom_alpha3" value="0.0001"/>
-    <param name="odom_alpha4" value="0.0001"/>
-  </node>-->
-
 
   <!-- Start Gazebo -->
   <include file="$(find robot_path_planning)/launch/lab.launch" /> 
@@ -48,8 +22,6 @@
     <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
   </node>
 
-
-
   <!-- Start the global path planner -->
   <node pkg="robot_path_planning" type="navfn_global.py" name="navfn_global" output="screen"/>
   
@@ -58,7 +30,6 @@
   <node pkg="robot_path_planning" type="local_static.py" name="local_planner" output="screen" />
 
   <node pkg="robot_path_planning" type="dynamic_obstacle.py" name="dynamic_obstacle" output="screen"/> 
-
 
   <!-- Start joint controller -->
   <node name="diff_drive_controller" pkg="controller_manager" type="spawner" args="diff_drive_controller" output="screen" >

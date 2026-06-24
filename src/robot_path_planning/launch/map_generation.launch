@@ -18,8 +18,8 @@
 
   <!-- Start Hector SLAM-->
   <include file="$(find robot_path_planning)/launch/hector_slam.launch" /> 
-<node pkg="tf" type="static_transform_publisher" name="mapodom" args= "0 0 0 0 0 0 map odom 10"/>
-<node pkg="tf" type="static_transform_publisher" name="odombase" args= "0 0 0 0 0 0 odom base_link 10"/> 
+  <node pkg="tf" type="static_transform_publisher" name="mapodom" args= "0 0 0 0 0 0 map odom 10"/>
+  <node pkg="tf" type="static_transform_publisher" name="odombase" args= "0 0 0 0 0 0 odom base_link 10"/> 
   <!--<node pkg="robot_path_planning" type="odom_to_base.py" name="odom_to_base" output="screen"/>
 -->
   <node pkg="robot_path_planning" type="ugv_control.py" name="ugv_control" output="screen"/> 

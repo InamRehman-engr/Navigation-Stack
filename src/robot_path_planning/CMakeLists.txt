@@ -15,17 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   robot_state_publisher
 )
 
-
 catkin_package(
   CATKIN_DEPENDS roscpp std_msgs geometry_msgs nav_msgs sensor_msgs tf2_ros robot_state_publisher
 )
-
-## Specify additional locations of header files
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-  include
-)
-
 
 ## Ensure that the CATKIN_PACKAGE_BIN_DESTINATION is set correctly
 set(CATKIN_PACKAGE_BIN_DESTINATION bin)
@@ -51,6 +43,3 @@ install(
     DIRECTORY src/
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}/src
 )
-
-add_executable(robot_path_planning src/standalone_costmap.cpp)
-target_link_libraries(robot_path_planning ${catkin_LIBRARIES})

@@ -1,6 +1,4 @@
 <launch>
-  <!-- Use simulated time 
-  <param name="use_sim_time" value="true"/>-->
 
   <include file="$(find robot_path_planning)/launch/rosserial_control.launch"/>
 

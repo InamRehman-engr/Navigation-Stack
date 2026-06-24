@@ -23,36 +23,21 @@ DWAPlannerROS:
   # Planner bias tuning
   path_distance_bias: 32.0      # Follow global path
   goal_distance_bias: 24.0      # Move toward goal
-<<<<<<< HEAD
   occdist_scale: 0.02           # Avoid obstacles
 
   forward_point_distance: 0.3
-=======
-  occdist_scale: 0.15           # Avoid obstacles
-
-  forward_point_distance: 0.325
->>>>>>> 77d0c76948a66632b3bf7148c1832289837f4468
   stop_time_buffer: 0.2
   scaling_speed: 0.4
   max_scaling_factor: 0.3
 
   # Goal tolerances
-<<<<<<< HEAD
   yaw_goal_tolerance: 0.3
   xy_goal_tolerance: 0.2
-=======
-  yaw_goal_tolerance: 0.25
-  xy_goal_tolerance: 0.1
->>>>>>> 77d0c76948a66632b3bf7148c1832289837f4468
   latch_xy_goal_tolerance: true
 
   # Behavior
   prune_plan: true
   restore_defaults: false
   publish_cost_grid: false
-<<<<<<< HEAD
   global_frame_id: map
 
-=======
-  global_frame_id: odom
->>>>>>> 77d0c76948a66632b3bf7148c1832289837f4468

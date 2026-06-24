@@ -2,8 +2,8 @@
   <!-- Use simulated time -->
   <param name="use_sim_time" value="true"/>
 
-  <!-- Load the map -->
-  <include file="$(find robot_path_planning)/launch/load_map.launch"/>
+  <!-- Load the map 
+  <include file="$(find robot_path_planning)/launch/load_map.launch"/>-->
 
   <!-- Start Gazebo -->
   <include file="$(find robot_path_planning)/launch/lab.launch" /> 
@@ -22,8 +22,8 @@
     <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
   </node>
 
-  <!-- Start Hector SLAM
-  <include file="$(find robot_path_planning)/launch/hector_slam.launch" />-->
+  <!-- Start Hector SLAM-->
+   <include file="$(find robot_path_planning)/launch/hector_slam.launch" /> 
 
    <!--Hector Trajectory Server for Localization-
   <node name="hector_trajectory_server" pkg="hector_trajectory_server" type="hector_trajectory_server" output="screen">
@@ -35,10 +35,10 @@
   </node> -->
 
   <!-- AMCL for Localization -->
-  <node name="amcl" pkg="amcl" type="amcl" output="screen">
+  <!-- <node name="amcl" pkg="amcl" type="amcl" output="screen">
     <param name="use_map_topic" value="true"/>
     <rosparam file="$(find robot_path_planning)/config/amcl_params.yaml" command="load"/>
-  </node> 
+  </node>  -->
 
  <!-- Spawn the diff_drive_controller -->
   <node name="diff_drive_controller" pkg="controller_manager" type="spawner" args="diff_drive_controller" output="screen" >
@@ -46,11 +46,18 @@
   </node>
 
   <!-- Move Base Node -->
-  <include file="$(find robot_path_planning)/launch/move_base.launch" />
-
-  <node pkg="robot_path_planning" type="local_planner.py" name="local_planner" output="screen" >
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+    <!-- Use Global Planner (supports dynamic replanning) -->
+    <param name="base_global_planner" value="navfn/NavfnROS"/>    
+    <!-- Use DWA for local planning-->
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>
+    <!-- Load Parameters -->
+    <rosparam file="$(find robot_path_planning)/config/move_base_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/costmap_common_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/local_costmap_params.yaml" command="load"/>
     <rosparam file="$(find robot_path_planning)/config/teb_params.yaml" command="load"/>
   </node>
   <!-- RViz for Path Planning -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/built_in_path_planning.rviz" output="screen"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/teb_sim.rviz" output="screen"/>
 </launch>
