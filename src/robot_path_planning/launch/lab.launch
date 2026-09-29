@@ -1,0 +1,4 @@
+  <launch>
+  <arg name="world_name" default="$(find robot_path_planning)/world/lab.world" />
+  <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="-s libgazebo_ros_factory.so $(arg world_name)" output="screen"/>
+  </launch>

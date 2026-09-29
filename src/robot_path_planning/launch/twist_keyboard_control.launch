@@ -1,0 +1,37 @@
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+
+  <!-- Start Gazebo-->
+  <include file="$(find robot_path_planning)/launch/lab.launch" /> 
+  
+  <!-- Load the robot description -->
+  <param name="robot_description" textfile="$(find assembly_urdf)/urdf/assembly_urdf.urdf"/>
+
+  <!-- Spawn the robot in Gazebo -->
+  <node name="spawn_ugv" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model ugv" />
+
+   <!-- Start joint_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Start joint_state_publisher
+  <node pkg="robot_path_planning" type="joint_state.py" name="joint_state_script" output="screen"/>-->
+
+  <!-- Start robot_state_publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
+    <param name="robot_description" textfile="$(find assembly_urdf)/urdf/assembly_urdf.urdf" />
+    <!--<remap from="joint_states" to="joint_states_mimic" />-->
+  </node>
+
+ <!-- Spawn the diff_drive_controller -->
+  <node name="diff_drive_controller" pkg="controller_manager" type="spawner" args="diff_drive_controller" output="screen" >
+    <rosparam file="$(find robot_path_planning)/config/controllers.yaml" command="load" />
+  </node>
+
+   <!-- Launch twist_keyboard to send cmd_vel -->
+  <node name="twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen" />
+
+  <!-- RViz for visualization -->
+  <node name="path_rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/hector_config.rviz" output="screen" />
+
+</launch>

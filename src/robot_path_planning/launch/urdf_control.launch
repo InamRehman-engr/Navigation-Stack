@@ -1,0 +1,18 @@
+<launch>
+  <arg
+    name="model" />
+  <param
+    name="robot_description"
+    textfile="$(find assembly_urdf)/urdf/assembly_urdf.urdf" />
+  <node
+    name="joint_state_publisher_gui"
+    pkg="joint_state_publisher_gui"
+    type="joint_state_publisher_gui" />
+  <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+  <node name="path_rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/display.rviz" output="screen" />
+  <!--<node pkg="robot_path_planning" type="joint_state.py" name="joint_state_script" output="screen"/>-->
+
+</launch>

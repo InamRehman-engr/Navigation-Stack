@@ -1,0 +1,16 @@
+<launch>
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+     <!-- Use Global Planner (supports dynamic replanning) -->
+    <param name="base_global_planner" value="navfn/NavfnROS"/>    
+    <!-- Use DWA for local planning-->
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
+    <!--<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS"/>-->
+
+    <!-- Load Parameters -->
+    <rosparam file="$(find robot_path_planning)/config/move_base_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/costmap_common_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/global_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/local_costmap_params.yaml" command="load"/>
+    <rosparam file="$(find robot_path_planning)/config/base_local_planner_params.yaml" command="load"/>
+  </node>
+</launch>

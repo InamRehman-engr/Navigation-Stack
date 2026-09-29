@@ -1,0 +1,25 @@
+diff_drive_controller:
+  type: "diff_drive_controller/DiffDriveController"
+  use_sim_time: true           # Use simulation time for Gazebo or other simulators
+  update_rate: 50.0            # Frequency at which the controller updates
+  robot_namespace: assembly_urdf"         # Robot namespace (use "/" or specify your robot's namespace)
+  left_wheel: "WL1-joint"
+  right_wheel: "WR1-joint"
+  wheel_separation: 0.496      # Distance between the left and right wheels
+  wheel_radius: 0.070          # Radius of the wheels (half of the diameter)
+  odom_frame: "odom"           # Frame name for the odometry output
+  base_frame_id: "base_link"   # Frame name for the robot's base
+  publish_rate: 50.0           # Rate at which odometry is published
+  enable_odom_tf: true         # Enable broadcasting the TF for odometry
+  torque_limit: 50.0            # Torque limit for the wheel motors
+  cmd_vel_timeout: 10          # Timeout for velocity commands
+  linear:                      # Linear velocity parameters
+    x: { min_velocity: -0.8, max_velocity: 0.8 }
+  angular:                     # Angular velocity parameters
+    z: { min_velocity: -0.8, max_velocity: 0.8 }
+  command_topic: "cmd_vel"     # Topic to subscribe for velocity commands
+  odometry_topic: "odom"       # Topic to publish odometry
+
+
+
+

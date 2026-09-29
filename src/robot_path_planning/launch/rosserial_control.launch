@@ -1,0 +1,16 @@
+ <launch>
+
+  <node pkg="robot_path_planning" type="port_automation.py" name="port_detection" output="screen"/>
+ 
+  <!-- Start the ROSserial Node -->
+  <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen">
+      <!-- Serial Port Configuration -->
+  <param name="port" value="/dev/ttyUSB1" />
+    <param name="baud" value="57600" />
+    <param name="input_buffer" value="512" />
+    <param name="output_buffer" value="512" />
+  </node>
+
+ <!--<node name="esp32_goal" pkg="robot_path_planning" type="move_base_controller.py" output="screen"/>-->
+
+</launch>

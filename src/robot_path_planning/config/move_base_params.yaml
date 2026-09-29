@@ -1,0 +1,51 @@
+move_base:
+ 
+  controller_frequency: 10.0
+  planner_frequency: 5.0
+
+
+  # Global Planner Parameters
+  NavfnROS:
+    allow_unknown: false             #  Avoids unknown areas for safer navigation
+    use_dijkstra: true               #  Dijkstra ensures optimal paths
+    use_quadratic: true
+    use_astar: false
+    use_grid_path: true
+
+  # Recovery Behaviors
+  recovery_behavior_enabled: true
+  clearing_rotation_allowed: true
+  shutdown_costmaps: false           #  Keep costmaps active for faster recovery
+
+  recovery_behaviors:
+  - name: "clear_costmap_recovery"
+    type: "clear_costmap_recovery/ClearCostmapRecovery"
+    clear_costmap_recovery:
+      reset_distance: 0.5             #  Adjusted for efficient obstacle clearance
+
+  - name: "rotate_recovery"
+    type: "rotate_recovery/RotateRecovery"
+    rotate_recovery:
+      frequency: 50.0                 #  Fast rotation commands (Hz)
+      max_rotational_vel: 1.5         #  Faster in-place turns (rad/s)
+      min_rotational_vel: 0.3         #  Ensures smooth rotation
+      sim_granularity: 0.02
+
+  - name: "aggressive_reset"
+    type: "clear_costmap_recovery/ClearCostmapRecovery"
+    clear_costmap_recovery:
+      reset_distance: 0.7              #  Larger reset for extreme cases
+
+  # Recovery Tweaks
+  recovery_behavior_frequency: 5.0     #  Balanced frequency to avoid excessive recovery triggers
+  recovery_behavior_timeout: 1.0       #  Quick timeout per recovery attempt
+  planner_patience: 0.5                #  Quick planner retries before recovery (seconds)
+  controller_patience: 0.3             #  Shorter controller patience to avoid excessive waiting
+
+  # Dynamic Obstacle Handling
+  oscillation_timeout: 5.0             #  Timeout before entering recovery (seconds)
+  oscillation_distance: 0.3            #  Prevents unnecessary recovery in narrow spaces
+
+  # Costmap Adaptation
+  conservative_reset_dist: 2.0          #  Larger reset distance when dynamic obstacles block the path
+  footprint_padding: 0.05               #  Avoids false obstacle detections

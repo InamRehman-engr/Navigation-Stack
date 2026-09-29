@@ -1,0 +1,33 @@
+TebLocalPlannerROS:
+
+  # Robot Configuration
+  max_vel_x: 0.5
+  max_vel_x_backwards: 0.5
+  max_vel_theta: 1.0
+  acc_lim_x: 1.0
+  acc_lim_theta: 1.0
+  min_turning_radius: 0.0
+
+  # Goal Tolerance
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerance: 0.1
+  free_goal_vel: false
+
+  # Obstacle Parameters
+  min_obstacle_dist: 0.2
+  inflation_dist: 0.1
+
+  # Optimization
+  no_inner_iterations: 5
+  no_outer_iterations: 4
+  optimization_activate: true
+  penalty_epsilon: 0.1
+
+  # Footprint (Circular Robot)
+  footprint_model:
+    type: "circular"
+    radius: 0.1
+
+  # Recovery Behaviors
+  shrink_horizon_backup: true
+  oscillation_recovery: true

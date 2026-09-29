@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="assembly_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-8.2112E-05 1.6653E-16 0.027016"    
+        rpy="0 0 0" />
+      <mass
+        value="20" />
+      <inertia
+        ixx="0.013351"
+        ixy="7.6799E-18"
+        ixz="1.0856E-05"
+        iyy="0.030427"
+        iyz="-4.6222E-18"
+        izz="0.039051" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="iron">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+ <link
+    name="mech_body_link">
+    <inertial>
+      <origin
+        xyz="-0.00066907 -0.00010039 0.26625"
+        rpy="0 0 0" />
+      <mass
+        value="1" />
+      <inertia
+        ixx="0.5342"
+        ixy="-5.1885E-06"
+        ixz="-0.00017749"
+        iyy="0.58665"
+        iyz="-2.9263E-10"
+        izz="0.13785" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.21 -0.117 -0.15"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/mech_body_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65098 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.21 -0.117 -0.15"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/mech_body_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+   <joint
+    name="mech_body_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.1"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mech_body_link" />
+  </joint>
+<link
+    name="lifter_link1">
+    <inertial>
+      <origin
+        xyz="-0.0010917 0.0024631 0.015031"
+        rpy="0 0 0" />
+      <mass
+        value="0.1333" />
+      <inertia
+        ixx="0.006032"
+        ixy="1.8666E-05"
+        ixz="1.6901E-05"
+        iyy="0.00074855"
+        iyz="-5.4338E-18"
+        izz="0.0066802" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/lifter_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65098 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/lifter_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lifter_joint1"
+    type="prismatic">
+    <origin
+      xyz="0.14 -0.115 0"
+      rpy="0 0 0" />
+    <parent
+      link="mech_body_link" />
+    <child
+      link="lifter_link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0.12"
+      upper="0.65"
+      effort="0"
+      velocity="0.5" />
+  </joint>
+<link
+    name="lifter_link2">
+    <inertial>
+      <origin
+        xyz="-0.0010917 0.0024631 0.015031"
+        rpy="0 0 0" />
+      <mass
+        value="0.1333" />
+      <inertia
+        ixx="0.006032"
+        ixy="1.8666E-05"
+        ixz="1.6901E-05"
+        iyy="0.00074855"
+        iyz="-5.4338E-18"
+        izz="0.0066802" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 -0.23 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/lifter_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65098 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0.23 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/lifter_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lifter_joint2"
+    type="prismatic">
+    <origin
+      xyz="0.14 0.115 0"
+      rpy="0 0 0" />
+    <parent
+      link="mech_body_link" />
+    <child
+      link="lifter_link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0.12"
+      upper="0.65"
+      effort="0"
+      velocity="0.5" />
+    <mimic joint="lifter_joint1" multiplier="1.0" offset="0.0"/>
+  </joint>
+
+ <link
+    name="revolute_link">
+    <inertial>
+      <origin
+        xyz="0.0025745 7.0102E-05 0.002418"
+        rpy="0 0 0" />
+      <mass
+        value="0.24127" />
+      <inertia
+        ixx="0.00082987"
+        ixy="-6.3952E-05"
+        ixz="8.2136E-09"
+        iyy="0.0031767"
+        iyz="1.9093E-10"
+        izz="0.0040013" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.105 -0.0575 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/revolute_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.64706 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.055 0.115 0.031"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/revolute_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="revolute_joint"
+    type="revolute">
+    <origin
+      xyz="0.055 0.115 0.031"
+      rpy="0 0 0" />
+    <parent
+      link="lifter_link1" />
+    <child
+      link="revolute_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.823599"
+      upper="0.823599"
+      effort="0"
+      velocity="0" />
+  </joint>
+ <link
+    name="slider_link">
+    <inertial>
+      <origin
+        xyz="-6.8974E-08 -0.0017422 0.0079516"
+        rpy="0 0 0" />
+      <mass
+        value="0.31656" />
+      <inertia
+        ixx="0.0028731"
+        ixy="-8.5834E-13"
+        ixz="-2.0401E-11"
+        iyy="0.0036775"
+        iyz="-2.4369E-09"
+        izz="0.00080775" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.055 -0.0575 0.031"
+        rpy="1.5708 0 1.598" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/slider_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.65098 0.61961 0.58824 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.055 0.0575 0.031"
+        rpy="1.5708 0 1.598" />
+      <geometry>
+        <mesh
+          filename="package://assembly_urdf/meshes/slider_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="slider_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="revolute_link" />
+    <child
+      link="slider_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.14366"
+      upper="0.12776"
+      effort="0"
+      velocity="0" />
+  </joint> 
+   <link
+    name="WR1-link">
+    <inertial>
+      <origin
+        xyz="0 0.043367 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.561" />
+      <inertia
+        ixx="0.0031906"
+        ixy="2.0347E-19"
+        ixz="-6.8359E-20"
+        iyy="0.0044645"
+        iyz="1.1704E-19"
+        izz="0.0031906" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/FR-link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/FR-link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="WR1-joint"
+    type="continuous">
+    <origin
+      xyz="0.1285 -0.20347 0.0262"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="WR1-link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="WL1-link">
+    <inertial>
+      <origin
+        xyz="-3.4694E-18 -0.043367 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.561" />
+      <inertia
+        ixx="0.0031906"
+        ixy="1.547E-19"
+        ixz="-2.1838E-19"
+        iyy="0.0044645"
+        iyz="3.7794E-20"
+        izz="0.0031906" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/BL-link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/BL-link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="WL1-joint"
+    type="continuous">
+    <origin
+      xyz="-0.1285 0.20347 0.0262"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="WL1-link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="WR2-link">
+    <inertial>
+      <origin
+        xyz="6.9389E-18 0.043367 2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.561" />
+      <inertia
+        ixx="0.0031906"
+        ixy="1.6445E-19"
+        ixz="-1.0362E-38"
+        iyy="0.0044645"
+        iyz="6.7508E-36"
+        izz="0.0031906" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/BR-link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+      xyz="0 0 0"
+      rpy="1 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/BR-link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="WR2-joint"
+    type="continuous">
+    <origin
+      xyz="-0.1285 -0.20347 0.0262"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="WR2-link" />
+    <axis
+      xyz="0 1 0" />
+    <mimic joint="WR1-joint" multiplier="1.0" offset="0.0"/>
+  </joint>
+   <link
+    name="WL2-link">
+    <inertial>
+      <origin
+        xyz="-1.1102E-16 -0.043367 -2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.561" />
+      <inertia
+        ixx="0.0031906"
+        ixy="9.0379E-19"
+        ixz="-1.6026E-20"
+        iyy="0.0044645"
+        iyz="8.5342E-19"
+        izz="0.0031906" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/FL-link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ugv/meshes/FL-link.STL" />
+      </geometry>
+         <surface>
+      <friction>
+        <ode>
+          <mu>1</mu> <!-- Coefficient of friction -->
+          <mu2>0.05</mu2> <!-- Secondary coefficient -->
+        </ode>
+      </friction>
+    </surface>
+    </collision>
+  </link>
+  <joint
+    name="WL2-joint"
+    type="continuous">
+    <origin
+      xyz="0.1285 0.20347 0.0262"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="WL2-link" />
+    <axis
+      xyz="0 1 0" />
+    <mimic joint="WL1-joint" multiplier="1.0" offset="0.0"/>
+
+  </joint>
+
+   <link name="laser">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.05"/>
+      </geometry>
+    </collision>
+ </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser"/>
+    <origin xyz="0 0 0.125" rpy="0 0 0"/>
+  </joint>
+
+    <gazebo reference = "laser">
+      <sensor type="ray" name="lidar_sensor">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>true</visualize>
+        <update_rate>50</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14</min_angle>
+              <max_angle>3.14</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.3</min>
+            <max>8.0</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="laser_controller" filename="libgazebo_ros_laser.so">
+          <topicName>/scan</topicName>
+          <frameName>laser</frameName>
+        </plugin>
+      </sensor>
+    </gazebo>
+
+<gazebo>
+    <plugin name="gazebo_ros_diff_drive" filename="libgazebo_ros_diff_drive.so">
+    <parameter name="use_sim_time" value="true"/>
+    <broadcastTF>true</broadcastTF>
+    <updateRate>50.0</updateRate>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <publishWheelTF>true</publishWheelTF>
+    <publishOdomTF>true</publishOdomTF>
+    <publishWheelJointState>true</publishWheelJointState>
+    <rosDebugLevel>info</rosDebugLevel>
+    <odometrySource>1</odometrySource>
+    <publishTf>1</publishTf>
+  
+    <leftJoint>WL1-joint</leftJoint>
+    <rightJoint>WR1-joint</rightJoint>  
+    <wheelSeparation>0.496</wheelSeparation>  <!--0.496-->
+    <wheelDiameter>0.15</wheelDiameter>  <!--0.15-->
+    
+    <wheelAcceleration>10.0</wheelAcceleration>
+    <wheelTorque>50.0</wheelTorque>
+    <torque>50.0</torque>
+    <covariance_x>0.0001</covariance_x>
+    <covariance_y>0.0001</covariance_y>
+    <covariance_yaw>0.01</covariance_yaw>
+  </plugin>
+</gazebo>
+
+
+<gazebo>
+  <plugin name="joint_lifter" filename="libgazebo_ros_joint_controller.so">
+    <joint_name>lifter_joint1</joint_name>
+    <p_gain>1.0</p_gain>
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="joint_revolute" filename="libgazebo_ros_joint_controller.so">
+    <joint_name>revolute_joint</joint_name>
+    <p_gain>1.0</p_gain>
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="joint_slider" filename="libgazebo_ros_joint_controller.so">
+    <joint_name>slider_joint</joint_name>
+    <p_gain>1.0</p_gain>
+  </plugin>
+</gazebo>
+
+</robot>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

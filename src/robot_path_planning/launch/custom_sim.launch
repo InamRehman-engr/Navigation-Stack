@@ -1,0 +1,58 @@
+<launch>
+  <!-- Use simulated time -->
+  <param name="use_sim_time" value="true"/>
+
+   <!-- Include localize -->
+  <include file="$(find robot_path_planning)/launch/hector_slam.launch" /> 
+
+  <!-- Start Gazebo -->
+  <include file="$(find robot_path_planning)/launch/lab.launch" /> 
+
+  <!-- Load the robot description -->
+  <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
+
+  <!-- Spawn the robot in Gazebo -->
+  <node name="spawn_ugv" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model ugv -x 2.0 -y 3.0 -z 0.1 -Y 1.57" />
+
+  <!-- Start joint_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Start robot_state_publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
+    <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
+  </node>
+
+  <!-- Start the global path planner 
+  <node pkg="robot_path_planning" type="global_planner_map_costmap.py" name="navfn_global" output="screen"/>-->
+
+  <node pkg="robot_path_planning" type="costmap.py" name="costmap" output="screen"/>
+
+  
+<node pkg="robot_path_planning" type="global_planner_live_costmap.py" name="global_planner" output="screen"/>
+  
+  <node pkg="robot_path_planning" type="local_a_star.py" name="local_a_star" output="screen" />
+  
+  <node pkg="robot_path_planning" type="local_static.py" name="local_planner" output="screen" />
+
+  <node pkg="robot_path_planning" type="dynamic_obstacle.py" name="dynamic_obstacle" output="screen"/> 
+
+  
+
+
+<node pkg="robot_path_planning" type="resource_monitor.py" name="resource_monitor" output="screen">
+  <param name="algo_name" value="custom"/>
+  <param name="tracked_nodes" value="/global_planner,/local_a_star,/local_planner,/dynamic_obstacle,/costmap"/>
+  <param name="path_topics" value="/global_path,/local_path"/>
+  <param name="goal_tolerance" value="0.35"/>
+  <param name="obstacle_distance_threshold" value="0.90"/>
+</node>
+
+  <!-- Start joint controller -->
+  <node name="diff_drive_controller" pkg="controller_manager" type="spawner" args="diff_drive_controller" output="screen" >
+    <rosparam file="$(find robot_path_planning)/config/controllers.yaml" command="load" />
+  </node>
+
+  <!-- Start RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/static_hector_slam.rviz" output="screen"/>
+
+</launch>

@@ -1,0 +1,29 @@
+<launch>
+  <!-- Load the robot description -->
+  <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
+
+  <!-- Start joint_state_publisher -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <!-- Start robot_state_publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
+    <param name="robot_description" textfile="$(find ugv)/urdf/ugv.urdf" />
+  </node>
+
+  <!-- Start ROS serial-->
+  <include file="$(find robot_path_planning)/launch/rosserial_control.launch" /> 
+
+  <!--Start Rplidar_ros -->
+  <include file="$(find rplidar_ros)/launch/rplidar_a1.launch" /> 
+
+  <!-- Start Hector SLAM-->
+  <include file="$(find robot_path_planning)/launch/hector_slam.launch" /> 
+  <node pkg="tf" type="static_transform_publisher" name="mapodom" args= "0 0 0 0 0 0 map odom 10"/>
+  <node pkg="tf" type="static_transform_publisher" name="odombase" args= "0 0 0 0 0 0 odom base_link 10"/> 
+  <!--<node pkg="robot_path_planning" type="odom_to_base.py" name="odom_to_base" output="screen"/>
+-->
+  <node pkg="robot_path_planning" type="ugv_control.py" name="ugv_control" output="screen"/> 
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/map_generation.rviz" output="screen"/>
+
+  </launch>

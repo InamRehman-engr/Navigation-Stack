@@ -1,0 +1,43 @@
+DWAPlannerROS:
+  # Velocity limits
+  max_vel_x: 0.5         # Forward max speed
+  min_vel_x: 0.0       # Enable backward motion
+
+  max_vel_theta: 1.0     # Fast turning in place
+  min_vel_theta: -1.0
+
+  acc_lim_x: 1.2        # Fast acceleration/deceleration
+  acc_lim_theta: 2.0
+  acc_lim_y: 0.0
+
+  # In-place rotation enabled here
+  min_in_place_vel_theta: 0.5   # Minimum speed to allow in-place turning
+
+  # Trajectory simulation
+  sim_time: 2.0
+  sim_granularity: 0.025
+  vx_samples: 10
+  vtheta_samples: 20
+  controller_frequency: 10.0
+
+  # Planner bias tuning
+  path_distance_bias: 32.0      # Follow global path
+  goal_distance_bias: 24.0      # Move toward goal
+  occdist_scale: 0.02           # Avoid obstacles
+
+  forward_point_distance: 0.3
+  stop_time_buffer: 0.2
+  scaling_speed: 0.4
+  max_scaling_factor: 0.3
+
+  # Goal tolerances
+  yaw_goal_tolerance: 0.3
+  xy_goal_tolerance: 0.2
+  latch_xy_goal_tolerance: true
+
+  # Behavior
+  prune_plan: true
+  restore_defaults: false
+  publish_cost_grid: false
+  global_frame_id: map
+

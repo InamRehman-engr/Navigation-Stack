@@ -1,0 +1,10 @@
+amcl:
+  min_particles: 100
+  max_particles: 200
+  kld_err: 0.05
+  kld_z: 0.99
+  laser_likelihood_max_dist: 2.5
+  update_min_d: 0.1
+  update_min_a: 0.1
+  resample_interval: 1
+  transform_tolerance: 0.2

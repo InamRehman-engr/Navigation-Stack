@@ -1,0 +1,301 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="room_world">
+
+    <!-- Add a ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+      <visual>
+        <geometry>
+          <plane size="50 50"/> <!-- Adjust size as needed -->
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Gray</name>
+          </script>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <plane size="50 50"/>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+    </include>
+
+    <!-- Add a light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Define Wall 1 -->
+    <model name="wall_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 0.5 6</size> <!-- Length, Thickness, Height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 0.5 6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 7.5 1.5 0 0 0</pose> <!-- Position (x, y, z), Rotation (roll, pitch, yaw) -->
+    </model>
+
+    <!-- Define Wall 2 -->
+    <model name="wall_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 15 6</size> <!-- Length, Thickness, Height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 15 6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>10 0 1.5 0 0 0</pose> <!-- Position (x, y, z), Rotation (roll, pitch, yaw) -->
+    </model>
+
+    <!-- Define Wall 3 -->
+    <model name="wall_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 0.5 6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 0.5 6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 -7.5 1.5 0 0 0</pose> <!-- Position (x, y, z), Rotation (roll, pitch, yaw) -->
+    </model>
+
+    <!-- Define Wall 4 -->
+    <model name="wall_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 15 6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 15 6</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>-10 0 1.5 0 0 0</pose> <!-- Position (x, y, z), Rotation (roll, pitch, yaw) -->
+    </model>
+
+    <!-- Add Cube 1 -->
+    <model name="cube_1">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size> <!-- Length, Width, Height -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>-5 -2 0.5 0 0 0</pose> <!-- Center of the room -->
+    </model>
+
+    <!-- Add Cube 2 -->
+    <model name="cube_2">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1 </size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>-5 2 0.5 0 0 0</pose> <!-- Near one corner -->
+    </model>
+
+    <!-- Add Cube 3 -->
+    <model name="cube_3">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 -2 0.5 0 0 0</pose> <!-- Near another corner -->
+    </model>
+
+        <!-- Add Cube 4 -->
+    <model name="cube_4">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>0 2 0.5 0 0 0</pose> <!-- Near another corner -->
+    </model>
+
+       <!-- Add Cube 5 -->
+    <model name="cube_5">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>5 -2 0.5 0 0 0</pose> <!-- Near another corner -->
+    </model>
+
+        <!-- Add Cube 6 -->
+    <model name="cube_6">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0.8 1</ambient>
+            <diffuse>0 0 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>5 2 0.5 0 0 0</pose> <!-- Near another corner -->
+    </model>
+
+
+  </world>
+</sdf>
