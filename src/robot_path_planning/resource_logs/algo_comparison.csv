@@ -1,0 +1,1 @@
+algo_name,status,sample_count,travel_time_sec,travel_distance_m,planned_path_distance_m,time_per_meter_sec,avg_speed_mps,avg_replan_latency_sec,max_replan_latency_sec,avg_cpu_pct,peak_cpu_pct,avg_memory_mb,peak_memory_mb,path_updates,obstacle_events,replan_events

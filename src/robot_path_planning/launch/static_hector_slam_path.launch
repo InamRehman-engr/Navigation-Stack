@@ -40,7 +40,8 @@
   
   <node pkg="robot_path_planning" type="costmap.py" name="costmap" output="screen"/> 
 
-  <node pkg="robot_path_planning" type="navfn_global.py" name="navfn_global" output="screen"/>
+  
+<node pkg="robot_path_planning" type="global_planner_map_costmap.py" name="navfn_global" output="screen"/>
 
   <node pkg="robot_path_planning" type="local_static.py" name="local_planner" output="screen" />
 

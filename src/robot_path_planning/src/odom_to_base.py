@@ -4,6 +4,11 @@ import rospy
 import tf
 from nav_msgs.msg import Odometry
 
+"""
+This used when running the Hector slam node independently (need to uncomment the relevant node in the hector_slam.launch file).
+It publishes the transform from the scanmatcher_frame to the odom frame and from the odom frame to the base_link frame.
+"""
+
 # Global variables for odometry
 odom_x = 0.0
 odom_y = 0.0

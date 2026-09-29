@@ -58,6 +58,16 @@
     <rosparam file="$(find robot_path_planning)/config/local_costmap_params.yaml" command="load"/>
     <rosparam file="$(find robot_path_planning)/config/dwa_params.yaml" command="load"/>
   </node>
+
+  
+<node pkg="robot_path_planning" type="resource_monitor.py" name="resource_monitor" output="screen">
+  <param name="algo_name" value="dwa"/>
+  <param name="tracked_nodes" value="/move_base"/>
+  <param name="path_topics" value="/move_base/NavfnROS/plan,/move_base/DWAPlannerROS/local_plan"/>
+  <param name="goal_tolerance" value="0.35"/>
+  <param name="obstacle_distance_threshold" value="0.90"/>
+</node>
+
   <!-- RViz for Path Planning -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_path_planning)/rviz/dwa_sim.rviz" output="screen"/>
 </launch>

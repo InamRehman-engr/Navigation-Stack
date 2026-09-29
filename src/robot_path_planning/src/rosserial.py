@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+This script provides a bridge between ROS and an Arduino using a custom serial protocol.
+It allows sending and receiving messages between ROS topics and the Arduino.
+"""
+
+
 import serial
 import rospy
 from std_msgs.msg import String

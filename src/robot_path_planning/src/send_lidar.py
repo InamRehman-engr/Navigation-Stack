@@ -2,6 +2,11 @@
 # -*- coding: utf-8 -*-
 # Python 2.7
 
+"""
+This script sends LIDAR scan data over a WebSocket server.
+Clients can connect to receive real-time LIDAR data.
+"""
+
 import rospy
 import math
 import struct

@@ -23,17 +23,29 @@
   </node>
 
   <!-- Start the global path planner 
-  <node pkg="robot_path_planning" type="navfn_global.py" name="navfn_global" output="screen"/>-->
+  <node pkg="robot_path_planning" type="global_planner_map_costmap.py" name="navfn_global" output="screen"/>-->
 
   <node pkg="robot_path_planning" type="costmap.py" name="costmap" output="screen"/>
 
-  <node pkg="robot_path_planning" type="global_planner.py" name="global_planner" output="screen"/>
+  
+<node pkg="robot_path_planning" type="global_planner_live_costmap.py" name="global_planner" output="screen"/>
   
   <node pkg="robot_path_planning" type="local_a_star.py" name="local_a_star" output="screen" />
   
   <node pkg="robot_path_planning" type="local_static.py" name="local_planner" output="screen" />
 
   <node pkg="robot_path_planning" type="dynamic_obstacle.py" name="dynamic_obstacle" output="screen"/> 
+
+  
+
+
+<node pkg="robot_path_planning" type="resource_monitor.py" name="resource_monitor" output="screen">
+  <param name="algo_name" value="custom"/>
+  <param name="tracked_nodes" value="/global_planner,/local_a_star,/local_planner,/dynamic_obstacle,/costmap"/>
+  <param name="path_topics" value="/global_path,/local_path"/>
+  <param name="goal_tolerance" value="0.35"/>
+  <param name="obstacle_distance_threshold" value="0.90"/>
+</node>
 
   <!-- Start joint controller -->
   <node name="diff_drive_controller" pkg="controller_manager" type="spawner" args="diff_drive_controller" output="screen" >

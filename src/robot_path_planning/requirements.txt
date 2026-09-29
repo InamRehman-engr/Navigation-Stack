@@ -1,0 +1,5 @@
+# Python 2.7-compatible package versions used by robot_path_planning scripts.
+numpy==1.16.6
+scipy==1.2.3
+websocket-client==0.59.0
+websocket-server==0.5.1

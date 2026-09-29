@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+Hardware interface for a UGV (Unmanned Ground Vehicle) using ROS.
+Converts cmd_vel commands to individual wheel velocities, publishes them to the Arduino,
+and integrates wheel velocity feedback to update joint states and odometry.
+"""
+
 import rospy
 import tf
 import math

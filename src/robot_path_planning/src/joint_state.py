@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+"""
+Used to copy wheel velocities and efforts from the front wheels to the corresponding rear wheels of a UGV (Unmanned Ground Vehicle).
+A janky way of converting diff drive into skid steer drive.
+"""
+
 import rospy
 from sensor_msgs.msg import JointState
 

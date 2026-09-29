@@ -1,15 +1,3 @@
-<!--<launch>
-    <node pkg="costmap_2d" type="costmap_2d_node" name="local_costmap" output="screen">
-        <rosparam file="$(find robot_path_planning)/config/costmap_params.yaml" command="load"/>
-    </node>
-</launch>-->
-
-
-
-
-
-
-
 <launch>
     <node pkg="costmap_2d" type="costmap_2d_node" name="costmap_node" output="screen">
         <rosparam file="$(find robot_path_planning)/config/costmap_common_params.yaml" command="load"/>

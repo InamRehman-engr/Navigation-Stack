@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+This script implements a local planner for a UGV (Unmanned Ground Vehicle) using ROS.
+It subscribes to the robot's pose, a global path, and laser scan data to build a local costmap.
+It publishes a local path for the robot to follow, dynamically updating based on obstacles detected in the costmap.
+"""
+
 import rospy
 import math
 import heapq

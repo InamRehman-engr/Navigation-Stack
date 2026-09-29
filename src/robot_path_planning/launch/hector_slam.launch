@@ -18,17 +18,6 @@
         <param name="laser_min_dist" value="0.1"/>    
         <param name="laser_max_dist" value="10.0"/>   
         <param name="map_size" value="2048"/>   
-
-        <!-- Disable map saving (we already have a prebuilt map)
-        <param name="pub_map_odom_transform" value="true" />
-        <param name="pub_odometry" value="true" />
-        <param name="pub_map_scanmatch_transform" value="true" />-->
-        
-        <!-- Enable pose estimation 
-        <param name="scan_subscriber_queue_size" value="5"/>
-        <param name="use_tf_scan_transformation" value="true"/>
-        <param name="use_tf_pose_start_estimate" value="false"/>-->
-        
     </node>
 
    <!--

@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 
-"""
-Need to install this also numpy
-sudo apt-get install python-pip
-sudo pip install scipy
-"""
 
-
+"""
+Costmap generator for a UGV (Unmanned Ground Vehicle) using ROS.
+Generates an inflated global costmap from the static occupancy grid map.
+"""
 
 import rospy
 from nav_msgs.msg import OccupancyGrid

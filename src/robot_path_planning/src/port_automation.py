@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+This script automates the detection of serial ports for the Arduino Nano and RPLIDAR devices.
+It updates the corresponding ROS launch files with the detected port names.
+"""
+
+
 import serial.tools.list_ports
 import os
 

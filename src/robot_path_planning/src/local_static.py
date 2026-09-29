@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+This script implements a local planner for a UGV (Unmanned Ground Vehicle) using ROS.
+It subscribes to the robot's pose and a global path, and publishes velocity commands to follow the path.
+It also supports pausing the motion based on an external signal.
+"""
+
 import rospy
 from geometry_msgs.msg import PoseWithCovarianceStamped, Twist
 from nav_msgs.msg import Path
@@ -16,11 +22,13 @@ class LocalPlanner:
         # Subscribers
         rospy.Subscriber('/poseupdate', PoseWithCovarianceStamped, self.pose_callback)
         rospy.Subscriber('/local_path', Path, self.path_callback)
+        rospy.Subscriber('/pause_local_planner', Bool, self.pause_callback)
 
         # Publisher
         self.cmd_vel_pub = rospy.Publisher('/local_cmd_vel', Twist, queue_size=3)
 
         # Variables
+        self.pause_motion = False
         self.robot_pose = None
         self.global_path = []
 
@@ -34,9 +42,6 @@ class LocalPlanner:
         self.axis_turn_threshold = math.radians(90)  # 60-degree threshold for axis turn
 
         rospy.loginfo("Strict Path Following Local Planner initialized.")
-        # Add this in __init__
-        self.pause_motion = False
-        rospy.Subscriber('/pause_local_planner', Bool, self.pause_callback)
 
     def pause_callback(self, msg):
         self.pause_motion = msg.data

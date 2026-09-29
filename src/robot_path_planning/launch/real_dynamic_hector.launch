@@ -39,7 +39,8 @@
 
   <node pkg="robot_path_planning" type="odom_to_base.py" name="odom_to_base" output="screen"/> 
 
-  <node pkg="robot_path_planning" type="navfn_global.py" name="global_planner" output="screen"/>
+  
+<node pkg="robot_path_planning" type="global_planner_map_costmap.py" name="global_planner" output="screen"/>
 
   <node pkg="robot_path_planning" type="local_static.py" name="local_planner" output="screen" />
 

@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+"""
+This script allows manual control of the UGV (Unmanned Ground Vehicle) using the keyboard.
+WASD keys are used for movement, 'z' to increase speed, 'x' to decrease speed, and 'q' to quit.
+
+Think of it as a (teleop_twist_keyboard) but for my custom stack
+"""
+
 import rospy
 from std_msgs.msg import String
 import sys

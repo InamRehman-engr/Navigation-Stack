@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+Global planner for a UGV (Unmanned Ground Vehicle) using ROS.
+Implements an A* algorithm on a live costmap.
+Publishes the computed global path for the robot to follow.
+"""
+
 import rospy
 from geometry_msgs.msg import PoseStamped
 from nav_msgs.msg import Path, OccupancyGrid
